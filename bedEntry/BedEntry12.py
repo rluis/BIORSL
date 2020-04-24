@@ -2,6 +2,10 @@ from .BedEntry6 import BedEntry6
 
 
 class BedEntry12(BedEntry6):
+    """
+    Represents a Bed line of Bed file, composed by 12 core column.
+
+    """
 
     def __init__(self, chr, sCoord, eCoord, name, score, strand, thickStart, thickEnd, itemRgb, blockCount, blockSizes,
                  blockStarts, extraFields=None):

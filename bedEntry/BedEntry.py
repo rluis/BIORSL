@@ -1,8 +1,22 @@
+from typing import List, Dict, Union
 
 class BedEntry(object):
+    """
+    Represents a Bed line of Bed file, composed by 3 core column.
 
-    #extraFields needs to be a List
-    def __init__(self, chr, sCoord, eCoord, extraFields=None):
+    """
+
+    def __init__(self, chr: str, sCoord: int, eCoord: int, extraFields: Union[None, List] = None) -> None:
+        """
+        Create an instance of BedEntry object.
+
+        :param str chr: the chromosome where region is located
+        :param int sCoord: the start coordinate of the region
+        :param int eCoord: the end coordinate of the region
+        :param None,List extraFields: Additional fields to the standard 3 columns. (optional)
+
+        """
+
         self.chr = chr
         self.sCoord = sCoord
         self.eCoord = eCoord
@@ -12,33 +26,58 @@ class BedEntry(object):
             for field in extraFields:
                 self.addExtraField(field)
 
-
     ###################
     ##  Properties   ##
     ###################
 
-
-
     @property
-    def chr(self):
+    def chr(self) -> str:
+        """
+        Get the chromosome (*chr*) where the region is located
+
+        :getter: Returns chromosome name
+        :setter: Sets chromosome name.
+        :type: string
+
+        """
         return self._chr
 
     @chr.setter
-    def chr(self, value):
+    def chr(self, value: str) -> None:
+        """
+        Set region chromosome the new input value.
+        :param str value: Chromosome Value
+        """
         if type(value) != str:
             raise ValueError("Chromosome {} is not a string type.".format(value))
         self._chr = value
 
     @chr.deleter
-    def chr(self):
+    def chr(self) -> None:
+        """
+        Set chr property as None
+        """
         self._chr = None
 
     @property
-    def sCoord(self):
+    def sCoord(self) -> int:
+        """
+        Get start coordinate (*sCoord*) where the region is located.
+
+        :getter: Returns start coordinate
+        :setter: Sets start coordinate. Can't be higher than eCoord, if latter is defined.
+        :type: int
+        """
         return self._sCoord
 
     @sCoord.setter
-    def sCoord(self, value):
+    def sCoord(self, value: int) -> None:
+        """
+        Set BedEntry start coordinate (*sCoord*) with new input value.
+        It is guaranteed that *sCoord* cannot be higher than *eCoord*, if latter is defined.
+
+        :param int value: A value to be the new *sCoord*
+        """
         if type(value) != int:
             raise ValueError("Start Position {} is not a integer type.".format(value))
 
@@ -48,15 +87,33 @@ class BedEntry(object):
         self._sCoord = value
 
     @sCoord.deleter
-    def sCoord(self):
+    def sCoord(self) -> None:
+        """
+        Set sCoord property as None
+        """
         self._sCoord = None
 
     @property
-    def eCoord(self):
+    def eCoord(self) -> int:
+        """
+        Get the end coordinate (*eCoord*) where the region is located.
+
+        :getter: Returns end coordinate
+        :setter: Sets end coordinate. Can't be lower than sCoord, if latter is defined.
+        :type: int
+
+        """
         return self._eCoord
 
     @eCoord.setter
-    def eCoord(self, value):
+    def eCoord(self, value: int):
+        """
+        Set BedEntry end coordinate (*eCoord*) with new input value.
+        It is guaranteed that *eCoord* cannot be smaller than *sCoord*, if latter is defined.
+
+        :param int value: A value to be the new *eCoord*
+        """
+
         if not isinstance(value, int):
             raise ValueError("End Position {} is not a integer type.".format(value))
         if hasattr(self, 'sCoord'):
@@ -66,10 +123,25 @@ class BedEntry(object):
 
     @eCoord.deleter
     def eCoord(self):
+        """
+        Set eCoord property as None
+        """
         self._eCoord = None
 
     @property
-    def extraFields(self):
+    def extraFields(self) -> Dict:
+        """
+        Get the Extra Fields (*extraFields*) in a Dict format.
+
+        - Key1 -> Value1
+        - Key2 -> Value2
+        - ...
+
+        :getter: Returns end coordinate
+        :setter: In case of List as input, it restores the Dict of ExtraFields with the elements in the input List.
+        :type: List,None
+
+        """
         return self._extraFields
 
     @extraFields.setter
@@ -78,28 +150,55 @@ class BedEntry(object):
 
     @extraFields.deleter
     def extraFields(self):
+        """
+        Empty extraFields to an empty Dict
+        """
         self._extraFields = {}
-
 
     ##################
     ##  Functions   ##
     ##################
 
-    def addExtraField(self, extraField):
+    def addExtraField(self, extraField: List) -> None:
+        """
+        Adds the Extra field(s) to BedEntry objects.
+
+        :param List extraField: List of extra Fields in the required order
+        """
         n_extra_fields = self.lenExtraFields()
         self.extraFields[n_extra_fields] = extraField
 
     def hasExtraFields(self) -> bool:
+        """
+        Question the object if it has extra fields or not. True in positive case, False otherwise.
+
+        :return bool: True / False
+        """
         return self.lenExtraFields() > 0
 
-    def lenExtraFields(self):
+    def lenExtraFields(self) -> int:
+        """
+        Get the exact number of extra fields in the BedEntry instance.
+
+        :return int: Number of Extra fields
+        """
         return len(self.extraFields.keys())
 
     def isOverlapping(self, other):
+        """
+        | Question the object if overlaps another object from *BedEntry*.
+        | Considered:
+
+        - *chr*
+        - *sCoord*
+        - *eCoord*
+
+        :param BedEntry other: BedEntry object to compare with
+        :return bool: *True* if both objects overlap each other, *False* otherwise.
+        """
         if self.chr == other.chr:
             return self.sCoord <= other.eCoord and other.sCoord <= self.eCoord
         return False
-
 
 
     ###########################
@@ -134,10 +233,18 @@ class BedEntry(object):
         return self.sCoord <= other.sCoord
 
     def __len__(self):
+        """
+        Returns the size of BedEntry object region
+
+        :return int: size of BedEntry object region
+        """
         return self.eCoord - self.sCoord
 
     def __str__(self):
+        """
+        | Returns a string version of BedEntry 3 Col, like:
+        | *chromosome* *<tab>* *start* *coordinate* *<tab>* *end* *coordinate*
+
+        :return str: String representation of BedEntry 3 Col.
+        """
         return "{}\t{}\t{}".format(self.chr, self.sCoord, self.eCoord)
-
-
-

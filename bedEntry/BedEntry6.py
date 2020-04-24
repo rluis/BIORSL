@@ -2,8 +2,21 @@ from .BedEntry import BedEntry
 
 
 class BedEntry6(BedEntry):
+    """
+    Represents a Bed line of Bed file, composed by 6 core column.
 
+    """
     def __init__(self, chr, sCoord, eCoord, name, score, strand, extraFields=None):
+        """
+
+        :param str chr: chromosome name where region is located
+        :param int sCoord: start coordinate of region
+        :param int eCoord: end coordinate of region
+        :param str ame: name of genomic feature
+        :param int score: score of genomic feature
+        :param "+","-" strand: DNA strand where the region belongs
+        :param None,List extraFields: Additional fields to the standard 6 columns. (optional)
+        """
         super().__init__(chr, sCoord, eCoord, extraFields)
         self.name = name
         self.score = score
@@ -60,6 +73,18 @@ class BedEntry6(BedEntry):
     ##################
 
     def isOverlapping(self, other, considerStrand=False):
+        """
+        | Question the object if overlaps another object from *BedEntry6*.
+        | Considered:
+
+        - *chr*
+        - *sCoord*
+        - *eCoord*
+        - *strand*
+
+        :param BedEntry6 other: *BedEntry6* object to compare with.
+        :return bool: *True* if both objects overlap each other, *False* otherwise.
+        """
         if considerStrand:
             if self.strand != other.strand:
                 return False
@@ -71,7 +96,25 @@ class BedEntry6(BedEntry):
     ##  Build-in Functions   ##
     ###########################
 
-    def __eq__(self, other):
+    def __eq__(self, other: object):
+        """
+        Return a *boolean* indicating if two *BedEntry6* objects share the same properties.
+
+        - *chr*
+        - *sCoord*
+        - *eCoord*
+        - *name*
+        - *score*
+        - *strand*
+
+        (Extra Fields Not Included)
+        :param BedEntry6 other: *BedEntry6* object to compare with.
+        :return: *True* if they have same properties, *False* otherwise.
+        :rtype: bool
+        """
+        if not isinstance(other, BedEntry6):
+            return NotImplemented
+
         return self.chr == other.chr and \
                self.sCoord == other.sCoord and \
                self.eCoord == other.eCoord and \
@@ -81,4 +124,11 @@ class BedEntry6(BedEntry):
 
 
     def __str__(self):
+        """
+        Returns a string version of *BedEntry6*, like:
+
+        *chromosome <tab> start coordinate <tab> end coordinate <tab> name <tab> score <tab> strand*
+
+        :return: String representation of BedEntry 6 Col.
+        """
         return "{}\t{}\t{}\t{}\t{}\t{}".format(self.chr, self.sCoord, self.eCoord, self.name, self.score, self.strand)
