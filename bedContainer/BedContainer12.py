@@ -5,6 +5,10 @@ from typing import Iterator, TypeVar, Generator, Generic, List, Dict
 
 
 class BedContainer12(BedContainer):
+    '''
+    Represents a Python Container for BedEntry objects (bed file format rows with 12 Columns, plus possibly Extra Fields).
+
+    '''
 
     def __init__(self, addExtras=False):
         super().__init__(addExtras)

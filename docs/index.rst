@@ -16,7 +16,7 @@ Table of Contents
     :maxdepth: 3
 
     bedEntry
-
+    bedContainer
 
 
 Indices and tables

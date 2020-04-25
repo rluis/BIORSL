@@ -20,8 +20,6 @@ Build-in Functions
 .. automethod:: bedEntry.BedEntry.BedEntry.__str__
 
 
-
-
 BedEntry Class (6 Col)
 ----------------------
 

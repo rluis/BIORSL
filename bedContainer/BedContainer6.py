@@ -2,10 +2,15 @@
 from bedEntry.BedEntry6 import BedEntry6
 
 from bedContainer.BedContainer import BedContainer
-from typing import Iterator, TypeVar, Generator, Generic, List, Dict
+from typing import Iterator, TypeVar, Generator, Generic, List, Dict, Union
 
 class BedContainer6(BedContainer):
+    '''
 
+    Represents a Python Container for BedEntry6 objects (bed file format rows with 6 columns, plus possibly Extra Fields).
+
+
+    '''
     def __init__(self, addExtras: bool = False):
         super().__init__(addExtras)
         self.bedContainer: Dict[str, List[BedEntry6]] = {}
@@ -18,7 +23,20 @@ class BedContainer6(BedContainer):
     ##  Functions   ##
     ##################
 
-    def addFrom_List(self, listBedEntry: list) -> None:
+    def addFrom_List(self, listBedEntry: List[Union[str, List, int]]) -> None:
+        """
+        | Add one BedEntry object based in input list (*listBedEntry*), composed by strings / List, following the rules below:
+
+        | ["*chr*", "*sCoord*", "*eCoord*", "*name*", "*score*","*strand*", [*extraField1*, *extraField2*, ...]]  (extraFields List is optional)
+
+        This function is also responsible for adding a unite to *entryCounts* Counter and to reset the sort property of
+        *BedContainer* to *False*, since the new added *BedEntry* is added at the end of the correspondent chromosome list.
+        Besides that, it also ensured that the chromosome key of the new *BedEntry* is added to the *BedContainer* if not
+        already there.
+
+        :param List listBedEntry: A list of strings with the required properties to be initialized by *BedEntry* constructor.
+        """
+
         if listBedEntry[0] not in self.chrList:
             self._addChr(listBedEntry[0])
 
