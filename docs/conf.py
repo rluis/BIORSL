@@ -23,7 +23,7 @@ author = 'Rui Sousa-Luis'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
-
+release_data = '25/04/2020'
 
 # -- General configuration ---------------------------------------------------
 
@@ -55,3 +55,12 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# -- Variables in Project Documentation ----------------------------------------
+
+rst_prolog = """
+.. |projectName| replace:: {}
+.. |projectVersion| replace::  {}
+.. |projectReleaseData| replace:: {}
+""".format(project, release, release_data)

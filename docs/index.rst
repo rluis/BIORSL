@@ -1,12 +1,14 @@
 BIORSL's documentation!
 =======================
 
-.. sidebar:: Version: 0.0.1
+.. sidebar::
+    Version: |projectVersion|
 
     Modules:
         - BedEntry
         - BedContainer
 
+    Latest Release Date: |projectReleaseData|
 
 Table of Contents
 ^^^^^^^^^^^^^^^^^
@@ -17,7 +19,7 @@ Table of Contents
 
     bedEntry
     bedContainer
-
+    contact
 
 Indices and tables
 ==================
