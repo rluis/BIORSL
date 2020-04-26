@@ -5,7 +5,7 @@ import time
 
 if __name__ == '__main__':
     a = BedEntry6("chr1", 20, 50, 'GeneName',0, "+")
-    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "+", ["A", "B" , "C","D"])
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
 
     i = 0
     start = time.time()
@@ -36,4 +36,18 @@ if __name__ == '__main__':
     a.addLeftClip(10);print(a)
     a.addRightClip(10);print(a)
 
+    print(b)
+    b.shift(10);print(b)
+    b.addClips(10);print(b)
+    b.addLeftClip(10);print(b)
+    b.addRightClip(10);print(b)
+
+    print(b)
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
+    b.shift(-10, considerStrand=True);print(b)
+    b.addClips(10);print(b)
+    b.addLeftClip(100,considerStrand=True);print(b)
+    b.addRightClip(10,considerStrand=True);print(b)
+
+    b.binRegion(10)
     print("\n\nTime of execution: {}".format(time.time() - start))

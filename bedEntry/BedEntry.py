@@ -82,9 +82,13 @@ class BedEntry(object):
         if type(value) != int:
             raise ValueError("Start Position {} is not a integer type.".format(value))
 
+        if value < 0:
+            raise ValueError("Start Position {} is negative.".format(value))
+
         if hasattr(self, 'eCoord'):
             if value >= self.eCoord:
                 raise ValueError("Start Coordinate higher or equal than End Coordinate")
+
         self._sCoord = value
 
     @sCoord.deleter
@@ -114,12 +118,16 @@ class BedEntry(object):
 
         :param int value: A value to be the new *eCoord*
         """
-
         if not isinstance(value, int):
             raise ValueError("End Position {} is not a integer type.".format(value))
+
+        if value < 0:
+          raise ValueError("Start Position {} is negative.".format(value))
+
         if hasattr(self, 'sCoord'):
             if value <= self.sCoord:
                 raise ValueError("End Coordinate lower or equal than Start Coordinate")
+
         self._eCoord = value
 
     @eCoord.deleter

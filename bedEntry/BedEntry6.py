@@ -6,6 +6,7 @@ class BedEntry6(BedEntry):
     Represents a Bed line of Bed file, composed by 6 core column.
 
     """
+
     def __init__(self, chr, sCoord, eCoord, name, score, strand, extraFields=None):
         """
 
@@ -117,6 +118,87 @@ class BedEntry6(BedEntry):
             return self.sCoord <= other.eCoord and other.sCoord <= self.eCoord
         return False
 
+    def addLeftClip(self, value: int, considerStrand: bool = False) -> None:
+        """
+        Adds *value* number of bp to the BedEntry on the Left side.
+        It means that if you gives *x* bp as input, it will set the sCoord to:
+
+        sCoord = sCoord - value
+
+        **However, if *considerStrand* is set as *True*** it adds the *x* bp on the 5' end, regardless is the left or right
+        side of the BedEntry.
+
+        When:
+
+        - *strand* = "+" -> 5'end = Left side
+        - *strand* = "-" -> 5'end = Right side
+
+        :param bool considerStrand: if *True* the Left side is consider the 5'End.
+        :param int value: Number of bp to increment on the Left side.
+        """
+        if not considerStrand:
+            self.sCoord -= value
+        else:
+            if self.strand == "+":
+                self.sCoord -= value
+            else:
+                self.eCoord += value
+
+    def addRightClip(self, value: int, considerStrand: bool = False) -> None:
+        """
+        Adds *value* number of bp to the BedEntry on the Right side.
+        It means that if you gives *x* bp as input, it will set the eCoord to:
+
+        eCoord = eCoord + value
+
+        **However, if *considerStrand* is set as *True*** it adds the *x* bp on the 3' end, regardless is the left or right
+        side of the BedEntry.
+
+        When:
+
+        - *strand* = "+" -> 3'end = Right side
+        - *strand* = "-" -> 3'end = Left side
+
+        :param bool considerStrand: if *True* the Left side is consider the 3'End.
+        :param int value: Number of bp to increment on the Right side
+        """
+        if not considerStrand:
+            self.eCoord += value
+        else:
+            if self.strand == "+":
+                self.eCoord += value
+            else:
+                self.sCoord -= value
+
+    def shift(self, value: int, considerStrand: bool = False) -> None:
+        """
+        Shifts the Region *value* bp to the right if, *value* is positive, or to the left if *value* is negative.
+
+        **However**, if ``considerStrand`` is set as ``True`` it shifts ``input`` bp **downstream** for positive ``input`` values,
+        and **upstream** for negative ``input`` values, regardless is the left or right.
+
+        When:
+
+        - *strand* = "+" -> Positive ``value`` -> Shifts to the Right
+        - *strand* = "-" -> Positive ``value`` -> Shifts to the Left
+        - *strand* = "+" -> Negative ``value`` -> Shifts to the Left
+        - *strand* = "-" -> Negative ``value`` -> Shifts to the Right
+
+        :param bool considerStrand: if ``True``, positive *values* shifts downstream and *negative* values upstream, considering the strand.
+        :param int value: Number of bp to shift the BedEntry region.
+        """
+        if not considerStrand:
+            self.addLeftClip(-value)
+            self.addRightClip(value)
+        else:
+            if self.strand == "+":
+                self.addLeftClip(-value)
+                self.addRightClip(value)
+            else:
+                self.addLeftClip(value)
+                self.addRightClip(-value)
+
+
     ###########################
     ##  Build-in Functions   ##
     ###########################
@@ -147,7 +229,6 @@ class BedEntry6(BedEntry):
                self.name == other.name and \
                self.score == other.score and \
                self.strand == other.strand
-
 
     def __str__(self):
         """
