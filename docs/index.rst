@@ -23,6 +23,7 @@ Table of Contents
 .. toctree::
     :maxdepth: 3
 
+    rstFiles/installation
     rstFiles/bedEntry/bedEntry_RSTIndex
     rstFiles/bedContainer/bedContainer_RSTIndex
     rstFiles/contact

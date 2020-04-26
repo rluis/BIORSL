@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='BIORSL',
     version='0.0.2',
-    packages=['bedEntry', 'bedEntry.test', 'bedContainer', 'bedContainer.testing'],
+    packages=['bedEntry', 'bedContainer'],
     url='https://github.com/rluis/BIORSL',
     license='GPL-3.0',
     author='rluis',
