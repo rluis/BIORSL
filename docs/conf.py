@@ -1,7 +1,7 @@
-    # Configuration file for the Sphinx documentation builder.
-    #
-    # This file only contains a selection of the most common options. For a full
-    # list see the documentation:
+# Configuration file for the Sphinx documentation builder.
+#
+# This file only contains a selection of the most common options. For a full
+# list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Path setup --------------------------------------------------------------
@@ -12,9 +12,9 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
-master_doc = 'index'
 
+sys.path.insert(0, os.path.abspath('..'))
+master_doc = 'index'  # To be interpreted by ReadTheDocs.
 
 # -- Project information -----------------------------------------------------
 
@@ -23,8 +23,7 @@ copyright = '2020, Rui Sousa-Luis'
 author = 'Rui Sousa-Luis'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
-release_data = '25/04/2020'
+release = '0.0.2'
 
 # -- General configuration ---------------------------------------------------
 
@@ -44,7 +43,6 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -57,11 +55,9 @@ html_theme = 'classic'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-
 # -- Variables in Project Documentation ----------------------------------------
 
 rst_prolog = """
 .. |projectName| replace:: {}
 .. |projectVersion| replace::  {}
-.. |projectReleaseData| replace:: {}
-""".format(project, release, release_data)
+""".format(project, release)

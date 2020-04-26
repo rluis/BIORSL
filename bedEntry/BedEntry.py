@@ -1,5 +1,6 @@
 from typing import List, Dict, Union
 
+
 class BedEntry(object):
     """
     Represents a Bed line of Bed file, composed by 3 core column.

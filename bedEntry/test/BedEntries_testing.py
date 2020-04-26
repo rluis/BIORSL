@@ -15,7 +15,14 @@ if __name__ == '__main__':
         x.append(BedEntry6("chr1", 5, 25, 'GeneName',0, "+", ["A"]))
         c = BedEntry6("chr1", 5, 25, 'GeneName',0, "-", ["A"])
 
+    print(a.chr)
+    print(a.sCoord)
+    print(a.eCoord)
+    print(a.name)
+    print(a.score)
+    print(a.strand)
     print(a.extraFields)
+
     print(b.extraFields)
     print(c.extraFields)
 

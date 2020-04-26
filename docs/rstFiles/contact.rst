@@ -7,7 +7,7 @@ or preferentially opening an issue in github |projectName| repository.
 About
 =====
 
-| |projectName| : v|projectVersion|
+| |projectName| : |projectVersion|
 | was developed by Rui Sousa-Luis.
 
 Latest release at: |projectReleaseData|

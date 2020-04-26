@@ -1,5 +1,5 @@
-BedContainer Class
-##################
+BedContainer Classes
+####################
 
 Represents a Bed Storage for *BedEntry* objects.
 

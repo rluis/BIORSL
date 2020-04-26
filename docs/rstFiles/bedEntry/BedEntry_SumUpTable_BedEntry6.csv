@@ -1,0 +1,28 @@
+Method Name,Description,First Version
+,,
+,**Properties**,
+,,
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.chr`,*Property*: chromosome,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.sCoord`,*Property*: start coordenate,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.eCoord`,*Property*: end coordenate,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.name`,*Property*: name,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.score`,*Property*: score,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.strand`,*Property*: strand,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.extraFields`,*Property*: extra Fields,0.0.1
+,,
+,**Class Methods**,
+,,
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.addExtraField`,Add Extra Fields,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.hasExtraFields`,Has extra Fields? ,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.lenExtraFields`,Number of extra fields,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.isOverlapping`,Feature A overlaps Feature B?,0.0.1
+,,
+,**Build-in functions**,
+,,
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__eq__`,*Build-in function*: A equals B,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__ge__`,*Build-in function*: A greater or equal than B,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__gt__`,*Build-in function*: A greater than B,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__lt__`,*Build-in function*: A lower than B,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__le__`,*Build-in function*: A lower or equal than B,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__len__`,*Build-in function*: Feature's Size,0.0.1
+:py:meth:`~bedEntry.BedEntry6.BedEntry6.__str__`,*Build-in function*: String Representation,0.0.1

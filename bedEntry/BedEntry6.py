@@ -12,7 +12,7 @@ class BedEntry6(BedEntry):
         :param str chr: chromosome name where region is located
         :param int sCoord: start coordinate of region
         :param int eCoord: end coordinate of region
-        :param str ame: name of genomic feature
+        :param str name: name of genomic feature
         :param int score: score of genomic feature
         :param "+","-" strand: DNA strand where the region belongs
         :param None,List extraFields: Additional fields to the standard 6 columns. (optional)
@@ -28,6 +28,14 @@ class BedEntry6(BedEntry):
 
     @property
     def name(self):
+        """
+        Get the name (*name*) of genomic feature.
+
+        :getter: Returns feature name
+        :setter: Sets feature name.
+        :type: string
+
+        """
         return self._name
 
     @name.setter
@@ -42,6 +50,14 @@ class BedEntry6(BedEntry):
 
     @property
     def score(self):
+        """
+        Get the score (*score*) of genomic feature.
+
+        :getter: Returns feature score
+        :setter: Sets feature score.
+        :type: int
+
+        """
         return self._score
 
     @score.setter
@@ -56,6 +72,14 @@ class BedEntry6(BedEntry):
 
     @property
     def strand(self):
+        """
+        Get the genomic feature strand (*strand*)
+
+        :getter: Returns feature strand
+        :setter: Sets feature strand.
+        :type: "+","-"
+
+        """
         return self._strand
 
     @strand.setter
@@ -83,6 +107,7 @@ class BedEntry6(BedEntry):
         - *strand*
 
         :param BedEntry6 other: *BedEntry6* object to compare with.
+        :param bool considerStrand: If *True* is only considered overlap if both features share the same DNA strand. (default *False*)
         :return bool: *True* if both objects overlap each other, *False* otherwise.
         """
         if considerStrand:
@@ -108,6 +133,7 @@ class BedEntry6(BedEntry):
         - *strand*
 
         (Extra Fields Not Included)
+
         :param BedEntry6 other: *BedEntry6* object to compare with.
         :return: *True* if they have same properties, *False* otherwise.
         :rtype: bool

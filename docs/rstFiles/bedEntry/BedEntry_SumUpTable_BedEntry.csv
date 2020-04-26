@@ -1,0 +1,25 @@
+Method Name,Description,First Version
+,,
+,**Properties**,
+,,
+:py:meth:`~bedEntry.BedEntry.BedEntry.chr`,*Property*: chromosome,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.sCoord`,*Property*: start coordenate,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.eCoord`,*Property*: end coordenate,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.extraFields`,*Property*: extra Fields,0.0.1
+,,
+,**Class Methods**,
+,,
+:py:meth:`~bedEntry.BedEntry.BedEntry.addExtraField`,Add Extra Fields,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.hasExtraFields`,Has extra Fields? ,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.lenExtraFields`,Number of extra fields,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.isOverlapping`,Feature A overlaps Feature B?,0.0.1
+,,
+,**Build-in functions**,
+,,
+:py:meth:`~bedEntry.BedEntry.BedEntry.__eq__`,*Build-in function*: A equals B,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__ge__`,*Build-in function*: A greater or equal than B,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__gt__`,*Build-in function*: A greater than B,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__lt__`,*Build-in function*: A lower than B,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__le__`,*Build-in function*: A lower or equal than B,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__len__`,*Build-in function*: Feature's Size,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.__str__`,*Build-in function*: String Representation,0.0.1

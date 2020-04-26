@@ -2,7 +2,6 @@ from bedContainer.BedContainer import BedContainer
 from bedContainer.BedContainer6 import BedContainer6
 from bedContainer.BedContainer12 import BedContainer12
 
-from bedEntry.BedEntry6 import BedEntry6
 import time
 
 if __name__ == '__main__':

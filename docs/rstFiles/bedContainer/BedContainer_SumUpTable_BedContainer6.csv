@@ -1,0 +1,26 @@
+Method Name,Description,First Version
+,,
+,**Properties**,
+,,
+,,
+,,
+,**Class Methods**,
+,,
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.empty`,Remove all entries,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.select_Chromosomes`,Return all Chr,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.select_EntriesInChr`,Return Entries in Chr,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.number_EntriesInChr`,Number Entries in Chr,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.addFrom_List`,Add a BedEntry using a List,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.addFrom_BedEntryObj`,Add directly a BedEntry object,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.removeEntryBed`,Remove BedEntry,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.merge`,Merge two BedContainers,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.sort`,Sort a BedContainer,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.readFromBedFile`,Read Bed File,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.writeToBedFile`,Write Bed File,0.0.1
+,,
+,**Build-in functions**,
+,,
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.__getitem__`,*Build-in function*: Container Getter,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.__iter__`,*Build-in function*: Container Iterator,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.__len__`,*Build-in function*: Number of entries,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.__str__`,*Build-in function*: String Representation,0.0.1

@@ -1,8 +1,5 @@
-BedEntry Class
-##############
-
-Represents a Bed line of Bed file!
-
+BedEntry Classes
+################
 
 BedEntry Class (3 Col)
 ----------------------
