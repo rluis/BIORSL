@@ -13,6 +13,10 @@ Method Name,Description,First Version
 :py:meth:`~bedEntry.BedEntry.BedEntry.hasExtraFields`,Has extra Fields? ,0.0.1
 :py:meth:`~bedEntry.BedEntry.BedEntry.lenExtraFields`,Number of extra fields,0.0.1
 :py:meth:`~bedEntry.BedEntry.BedEntry.isOverlapping`,Feature A overlaps Feature B?,0.0.1
+:py:meth:`~bedEntry.BedEntry.BedEntry.addLeftClip`,Add Left Clip ,0.0.2
+:py:meth:`~bedEntry.BedEntry.BedEntry.addRightClip`,Add Right Clip,0.0.2
+:py:meth:`~bedEntry.BedEntry.BedEntry.addClips`,Add Both Clips,0.0.2
+:py:meth:`~bedEntry.BedEntry.BedEntry.shift`,Shift Region,0.0.2
 ,,
 ,**Build-in functions**,
 ,,

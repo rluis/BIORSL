@@ -110,5 +110,11 @@ Module Usage
         #Get size of genomic region
         sizeRegion = len(a)
 
+        #Change Genomic Region
+        a.shift(10); print(a)        # Shift Region
+        a.addClips(10); print(a)     # Add clips on both sides
+        a.addLeftClip(10); print(a)  # Add clip on left side
+        a.addRightClip(10); print(a) # Add clip on right side
+
 
 

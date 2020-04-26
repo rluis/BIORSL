@@ -24,6 +24,7 @@ author = 'Rui Sousa-Luis'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.2'
+release_date = "April 26, 2020"
 
 # -- General configuration ---------------------------------------------------
 
@@ -60,4 +61,5 @@ html_static_path = ['_static']
 rst_prolog = """
 .. |projectName| replace:: {}
 .. |projectVersion| replace::  {}
-""".format(project, release)
+.. |projectReleaseData| replace::  {}
+""".format(project, release, release_date)

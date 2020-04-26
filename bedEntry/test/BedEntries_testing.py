@@ -29,5 +29,11 @@ if __name__ == '__main__':
     print(a.isOverlapping(b))
     print(a.isOverlapping(b, considerStrand=True))
 
+    print(a)
+
+    a.shift(10);print(a)
+    a.addClips(10);print(a)
+    a.addLeftClip(10);print(a)
+    a.addRightClip(10);print(a)
 
     print("\n\nTime of execution: {}".format(time.time() - start))

@@ -201,6 +201,50 @@ class BedEntry(object):
             return self.sCoord <= other.eCoord and other.sCoord <= self.eCoord
         return False
 
+    def addLeftClip(self, value: int) -> None:
+        """
+        Adds *value* number of bp to the BedEntry on the Left side.
+        It means that if you gives *x* bp as input, it will set the sCoord to:
+
+        sCoord = sCoord - value
+
+        :param int value: Number of bp to increment on the Left side.
+        """
+        self.sCoord -= value
+
+    def addRightClip(self, value: int) -> None:
+        """
+        Adds *value* number of bp to the BedEntry on the Right side.
+        It means that if you gives *x* bp as input, it will set the eCoord to:
+
+        eCoord = eCoord + value
+
+        :param int value: Number of bp to increment on the Right side
+        """
+        self.eCoord += value
+
+    def addClips(self, value: int) -> None:
+        """
+        Extends the clips on the Left and Right side by *value* bp.
+        It means that if you gives *x* bp as input, it will set the sCoord and eCoord to:
+
+        sCoord = sCoord - value
+        eCoord = eCoord + value
+
+        :param int value: Number of bp to increment on the Left and Right side.
+        """
+        self.addLeftClip(value)
+        self.addRightClip(value)
+
+    def shift(self, value: int) -> None:
+        """
+        Shifts the Region *value* bp to the right if, *value* is positive, or to the left if *value* is negative
+
+        :param int value: Number of bp to shift the BedEntry region.
+        """
+        self.addLeftClip(-value)
+        self.addRightClip(value)
+
 
     ###########################
     ##  Build-in Functions   ##
