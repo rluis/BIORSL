@@ -116,5 +116,12 @@ Module Usage
         a.addLeftClip(10); print(a)  # Add clip on left side
         a.addRightClip(10); print(a) # Add clip on right side
 
+        #Binning a BedEntry
+        out_BedContainer = b.binRegion(10) # Binning in 10 bins
 
+        #Get Edges bp
+        b.extractLeftSide()                         # Return Left Most bp
+        b.extractRightSide()                        # Return Right Most bp
+        b.extractLeftSide(considerStrand=True)      # Return TSS bp
+        b.extractRightSide(considerStrand=True)     #Return TES bp
 

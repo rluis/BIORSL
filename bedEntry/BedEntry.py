@@ -122,7 +122,7 @@ class BedEntry(object):
             raise ValueError("End Position {} is not a integer type.".format(value))
 
         if value < 0:
-          raise ValueError("Start Position {} is negative.".format(value))
+            raise ValueError("Start Position {} is negative.".format(value))
 
         if hasattr(self, 'sCoord'):
             if value <= self.sCoord:
@@ -253,6 +253,47 @@ class BedEntry(object):
         self.addLeftClip(-value)
         self.addRightClip(value)
 
+    def binRegion(self, nBin: int) -> object:
+        """
+        Binning BedEntry in ``nBin`` number of *BedEntry* objects, returned in a *BedContainer*.
+
+        :param int nBin: Number of bins to divide the *BedEntry* objects
+        :return BedContainer: A *BedContainer* where are storage the *BedEntry* bins created
+        """
+        from bedContainer.BedContainer import BedContainer
+
+        # Initialize BedContainer to return
+        bedContainerToReturn = BedContainer(addExtras=True)
+        quotient, remainder = divmod(len(self), nBin)
+        number_bp_per_bin = [quotient + 1] * remainder + [quotient] * (nBin - remainder)
+        int_sCoord = self.sCoord
+        int_eCoord = self.sCoord
+        for i in range(nBin):
+            if i == 0:  # first cycle
+                int_sCoord = self.sCoord
+                int_eCoord += number_bp_per_bin[i]
+            else:
+                int_sCoord += number_bp_per_bin[i-1]
+                int_eCoord += number_bp_per_bin[i]
+            # Create BedEntry object
+            newBin = BedEntry(self.chr, int_sCoord, int_eCoord, list(self.extraFields.values()))
+
+            # Add to BedContainer
+            bedContainerToReturn.addFrom_BedEntryObj(newBin)
+
+        return bedContainerToReturn
+
+    def extractLeftSide(self):
+        """
+        Reduce the feature to the left most bp.
+        """
+        self.eCoord = self.sCoord + 1
+
+    def extractRightSide(self):
+        """
+        Reduce the feature to the right most bp.
+        """
+        self.sCoord = self.eCoord - 1
 
     ###########################
     ##  Build-in Functions   ##

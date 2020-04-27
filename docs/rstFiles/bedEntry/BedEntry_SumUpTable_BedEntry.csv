@@ -17,6 +17,10 @@ Method Name,Description,First Version
 :py:meth:`~bedEntry.BedEntry.BedEntry.addRightClip`,Add Right Clip,0.0.2
 :py:meth:`~bedEntry.BedEntry.BedEntry.addClips`,Add Both Clips,0.0.2
 :py:meth:`~bedEntry.BedEntry.BedEntry.shift`,Shift Region,0.0.2
+:py:meth:`~bedEntry.BedEntry.BedEntry.binRegion`,Split a BedEntry in nBins,0.0.3
+:py:meth:`~bedEntry.BedEntry.BedEntry.extractLeftSide`,Reduces BedEntry to left most bp,0.0.3
+:py:meth:`~bedEntry.BedEntry.BedEntry.extractRightSide`,Reduces BedEntry to right most bp,0.0.3
+
 ,,
 ,**Build-in functions**,
 ,,

@@ -1,4 +1,7 @@
 from .BedEntry import BedEntry
+from typing import TypeVar
+
+BedContainer6 = TypeVar('BedContainer6')
 
 
 class BedEntry6(BedEntry):
@@ -198,6 +201,64 @@ class BedEntry6(BedEntry):
                 self.addLeftClip(value)
                 self.addRightClip(-value)
 
+    def binRegion(self, nBin: int) -> BedContainer6:
+        """
+        Binning BedEntry in ``nBin`` number of *BedEntry* objects, returned in a *BedContainer*.
+
+        :param int nBin: Number of bins to divide the *BedEntry* objects
+        :return BedContainer: A *BedContainer* where are storage the *BedEntry* bins created
+        """
+
+        # Initialize BedContainer to return
+        from bedContainer.BedContainer6 import BedContainer6
+
+        bedContainerToReturn = BedContainer6(addExtras=True)
+        quotient, remainder = divmod(len(self), nBin)
+        number_bp_per_bin = [quotient + 1] * remainder + [quotient] * (nBin - remainder)
+        int_sCoord = self.sCoord
+        int_eCoord = self.sCoord
+        for i in range(nBin):
+            if i == 0:  # first cycle
+                int_sCoord = self.sCoord
+                int_eCoord += number_bp_per_bin[i]
+            else:
+                int_sCoord += number_bp_per_bin[i - 1]
+                int_eCoord += number_bp_per_bin[i]
+
+            # Create BedEntry object
+            newBin = BedEntry6(self.chr, int_sCoord, int_eCoord, self.name, self.score, self.strand,
+                               list(self.extraFields.values()))
+
+            # Add to BedContainer
+            bedContainerToReturn.addFrom_BedEntryObj(newBin)
+
+        return bedContainerToReturn
+
+    def extractLeftSide(self, considerStrand: bool = False):
+        """
+        Reduces the feature to the left most bp.
+
+        **However**, if ``considerStrand`` is set as *True*:
+
+            *Reduces the feature to TSS bp*
+        """
+        if not considerStrand:
+            self.eCoord = self.sCoord + 1
+        else:
+            self.sCoord = self.eCoord - 1
+
+    def extractRightSide(self, considerStrand: bool = False):
+        """
+        Reduce the feature to the right most bp.
+
+        **However**, if ``considerStrand`` is set as *True*:
+
+            *Reduces the feature to TES bp*
+        """
+        if not considerStrand:
+            self.sCoord = self.eCoord - 1
+        else:
+            self.eCoord = self.sCoord + 1
 
     ###########################
     ##  Build-in Functions   ##

@@ -49,5 +49,19 @@ if __name__ == '__main__':
     b.addLeftClip(100,considerStrand=True);print(b)
     b.addRightClip(10,considerStrand=True);print(b)
 
-    b.binRegion(10)
+    b = BedEntry("chr5", 20, 61, ["A", "B" , "C","D"])
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
+
+    for x in b.binRegion(10):
+        print(x.name)
+
+    print(b); b.extractLeftSide();print(b)
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
+    print(b); b.extractRightSide(); print(b)
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
+    print(b); b.extractLeftSide(considerStrand=True);print(b)
+    b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
+    print(b); b.extractRightSide(considerStrand=True); print(b)
+
+
     print("\n\nTime of execution: {}".format(time.time() - start))
