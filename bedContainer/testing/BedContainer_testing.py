@@ -12,7 +12,9 @@ if __name__ == '__main__':
     print(container1)
 
     container1.readFromBedFile("HeLa_ExpressedGenes_proteinCoding_500-NoOverlap-2000.bed")
-
+    print(container1)
+    container1.sort()
+    exit()
     print(container1)
     for x in container1:
         print(x)

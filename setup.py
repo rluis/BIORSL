@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='BIORSL',
-    version='0.0.4',
+    version='0.0.5',
     packages=['bedEntry', 'bedContainer'],
     url='https://github.com/rluis/BIORSL',
     license='GPL-3.0',

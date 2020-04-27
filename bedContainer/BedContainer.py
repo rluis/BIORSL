@@ -56,7 +56,7 @@ class BedContainer(object):
 
         :return List: Return a List of strings representing chromosome names.
         """
-        return list(self.chrList)
+        return self.chrList
 
     def select_EntriesInChr(self, chrom: str) -> List[BedEntry]:
         """
@@ -190,7 +190,7 @@ class BedContainer(object):
             return sorted(chrEntries)
 
         # Sort Chromosome List names
-        self.chrList = self.select_Chromosomes().sort()
+        self.chrList = sorted(self.select_Chromosomes())
 
         # Sort BedEntry objects inside each Chromosome.
         for chrom in self.select_Chromosomes():
