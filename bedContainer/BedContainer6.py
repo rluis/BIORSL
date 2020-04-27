@@ -50,6 +50,41 @@ class BedContainer6(BedContainer):
 
         self.entryCounts += 1
 
+    ######################
+    ##  IO Management   ##
+    ######################
+
+    def readFromBedFile(self, BedFilePath: str) -> None:
+        """
+        Read a Bed File with 6 Columns (is possible to add more in extraFields) and store in the *BedContainer6* object.
+
+        :param str BedFilePath: Path to Bed File Format
+        """
+        with open(BedFilePath) as readFile:
+            for line in readFile:
+                self.addFrom_List(line.strip().split("\t"))
+        self.isSorted = False
+
+    def writeToBedFile(self, BedFilePath: str) -> None:
+        """
+        Writes in a Bed File Format all *BedEntry6* objects inside *BedContainer6*.
+        If the BedContainer6 has defined having the flag *addExtras* as *True*, the extra fields will also be write in the
+        Bed File, in the same order as they are registered in *BedContainer* object.
+
+        :param str BedFilePath: The path where the bed file will be writen.
+        """
+        with open(BedFilePath, 'w') as writeFile:
+            for chromosome in self.select_Chromosomes():
+                for entry in self.bedContainer[chromosome]:
+                    if self.addExtras:
+                        tmpList = []
+                        for key in entry.extraFields.keys():
+                            tmpList.append(entry.extraFields[key])
+                        tmpList = "\t".join(tmpList)
+                        writeFile.write("{}\t{}\n".format(str(entry), str(tmpList)))
+                    else:
+                        writeFile.write("{}\n".format(str(entry)))
+
 
     ###########################
     ##  Build-in Functions   ##

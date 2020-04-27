@@ -10,9 +10,17 @@ if __name__ == '__main__':
     container2 = BedContainer6(addExtras=True)
 
     print(container1)
-    container1.sort()
 
     container1.readFromBedFile("HeLa_ExpressedGenes_proteinCoding_500-NoOverlap-2000.bed")
+
+    print(container1)
+    for x in container1:
+        print(x)
+
+    exit()
+
+
+
     print(container1)
     container1.sort()
     print(container1)
