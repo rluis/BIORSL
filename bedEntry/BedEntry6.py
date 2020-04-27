@@ -245,7 +245,10 @@ class BedEntry6(BedEntry):
         if not considerStrand:
             self.eCoord = self.sCoord + 1
         else:
-            self.sCoord = self.eCoord - 1
+            if self.strand == "+":
+                self.eCoord = self.sCoord + 1
+            else:
+                self.sCoord = self.eCoord - 1
 
     def extractRightSide(self, considerStrand: bool = False):
         """
@@ -258,7 +261,10 @@ class BedEntry6(BedEntry):
         if not considerStrand:
             self.sCoord = self.eCoord - 1
         else:
-            self.eCoord = self.sCoord + 1
+            if self.strand == "+":
+                self.sCoord = self.eCoord - 1
+            else:
+                self.eCoord = self.sCoord + 1
 
     ###########################
     ##  Build-in Functions   ##

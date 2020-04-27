@@ -123,5 +123,5 @@ Module Usage
         b.extractLeftSide()                         # Return Left Most bp
         b.extractRightSide()                        # Return Right Most bp
         b.extractLeftSide(considerStrand=True)      # Return TSS bp
-        b.extractRightSide(considerStrand=True)     #Return TES bp
+        b.extractRightSide(considerStrand=True)     # Return TES bp
 
