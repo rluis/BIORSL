@@ -2,11 +2,19 @@ from bedEntry.BedEntry import BedEntry
 from bedEntry.BedEntry6 import BedEntry6
 from bedEntry.BedEntry12 import BedEntry12
 import time
+import pysam
 
 if __name__ == '__main__':
-    a = BedEntry6("chr1", 20, 50, 'GeneName',0, "+")
+    s =time.time()
+    bam = pysam.AlignmentFile("test.bam")
+
+
+    a = BedEntry6("chr1", 20, 1000000, 'GeneName',0, "+")
     b = BedEntry6("chr1", 20, 50, 'GeneName',0, "-", ["A", "B" , "C","D"])
 
+    print(len(a.getReadsOverlapping(bam)))
+    print(time.time() - s)
+    exit()
     i = 0
     start = time.time()
     x = []

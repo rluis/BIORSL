@@ -1,4 +1,5 @@
 from typing import List, Dict, Union
+import pysam
 
 
 class BedEntry(object):
@@ -283,17 +284,29 @@ class BedEntry(object):
 
         return bedContainerToReturn
 
-    def extractLeftSide(self):
+    def extractLeftSide(self) -> None:
         """
         Reduce the feature to the left most bp.
         """
         self.eCoord = self.sCoord + 1
 
-    def extractRightSide(self):
+    def extractRightSide(self) -> None:
         """
         Reduce the feature to the right most bp.
         """
         self.sCoord = self.eCoord - 1
+
+    def getReadsOverlapping(self, pysamObj: pysam.AlignmentFile) -> List[pysam.AlignedSegment]:
+        """
+        Returns the overlapping reads in a BAM file over the BedEntry region. Strandness is not taken into account.
+
+        :param pysam.AlignmentFile pysamObj: A pysam AlignmentFile object with the BAM file to search the overlapping.
+        :return List[pysam.AlignedSegment]: List with all the overlapping reads in pysam.AlignedSegment objects
+        """
+        readList = []
+        for read in pysamObj.fetch(self.chr, self.sCoord, self.eCoord):
+            readList.append(read)
+        return readList
 
     ###########################
     ##  Build-in Functions   ##

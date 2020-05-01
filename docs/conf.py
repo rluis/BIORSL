@@ -23,7 +23,7 @@ copyright = '2020, Rui Sousa-Luis'
 author = 'Rui Sousa-Luis'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.5'
+release = '0.0.6'
 release_date = "April 27, 2020"
 
 # -- General configuration ---------------------------------------------------

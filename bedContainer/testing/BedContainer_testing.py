@@ -14,14 +14,15 @@ if __name__ == '__main__':
     container1.readFromBedFile("HeLa_ExpressedGenes_proteinCoding_500-NoOverlap-2000.bed")
     print(container1)
     container1.sort()
-    exit()
-    print(container1)
+
+    chr = []
     for x in container1:
-        print(x)
+        if x.chr not in chr:
+            chr.append(x.chr)
+    print(chr)
 
-    exit()
 
-
+    container1.writeToBedFile("AAAA")
 
     print(container1)
     container1.sort()

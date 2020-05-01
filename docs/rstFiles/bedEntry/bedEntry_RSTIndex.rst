@@ -125,3 +125,9 @@ Module Usage
         b.extractLeftSide(considerStrand=True)      # Return TSS bp
         b.extractRightSide(considerStrand=True)     # Return TES bp
 
+        # Intersect with BAM file (pysam object)
+        bam = pysam.AlignmentFile("test.bam")           # Read Bam file in pysam.AlignmentFile
+        overlappingReads = a.getReadsOverlapping(bam)   # Get overlapping reads in pysam.AlignmentSegments
+        overlappingReadsCount = len(overlappingReads)   # Get number of overlapping reads
+
+
