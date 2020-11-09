@@ -8,7 +8,8 @@ Method Name,Description,First Version
 ,,
 :py:meth:`~bedContainer.BedContainer6.BedContainer6.empty`,Remove all entries,0.0.1
 :py:meth:`~bedContainer.BedContainer6.BedContainer6.select_Chromosomes`,Return all Chr,0.0.1
-:py:meth:`~bedContainer.BedContainer6.BedContainer6.select_EntriesInChr`,Return Entries in Chr,0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.select_EntriesInChr`,REMOVED in 0.07 version - please use findEntriesWith (Return Entries in Chr),0.0.1
+:py:meth:`~bedContainer.BedContainer6.BedContainer6.findEntriesWith`,Find entries accordingly with input features,0.0.7
 :py:meth:`~bedContainer.BedContainer6.BedContainer6.number_EntriesInChr`,Number Entries in Chr,0.0.1
 :py:meth:`~bedContainer.BedContainer6.BedContainer6.addFrom_List`,Add a BedEntry using a List,0.0.1
 :py:meth:`~bedContainer.BedContainer6.BedContainer6.addFrom_BedEntryObj`,Add directly a BedEntry object,0.0.1

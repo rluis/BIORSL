@@ -8,7 +8,8 @@ Method Name,Description,First Version
 ,,
 :py:meth:`~bedContainer.BedContainer.BedContainer.empty`,Remove all entries,0.0.1
 :py:meth:`~bedContainer.BedContainer.BedContainer.select_Chromosomes`,Return all Chr,0.0.1
-:py:meth:`~bedContainer.BedContainer.BedContainer.select_EntriesInChr`,Return Entries in Chr,0.0.1
+:py:meth:`~bedContainer.BedContainer.BedContainer.select_EntriesInChr`,REMOVED in 0.07 version - please use findEntriesWith (Return Entries in Chr),0.0.1
+:py:meth:`~bedContainer.BedContainer.BedContainer.findEntriesWith`,Find entries accordingly with input features,0.0.7
 :py:meth:`~bedContainer.BedContainer.BedContainer.number_EntriesInChr`,Number Entries in Chr,0.0.1
 :py:meth:`~bedContainer.BedContainer.BedContainer.addFrom_List`,Add a BedEntry using a List,0.0.1
 :py:meth:`~bedContainer.BedContainer.BedContainer.addFrom_BedEntryObj`,Add directly a BedEntry object,0.0.1
@@ -17,6 +18,7 @@ Method Name,Description,First Version
 :py:meth:`~bedContainer.BedContainer.BedContainer.sort`,Sort a BedContainer,0.0.1
 :py:meth:`~bedContainer.BedContainer.BedContainer.readFromBedFile`,Read Bed File,0.0.1
 :py:meth:`~bedContainer.BedContainer.BedContainer.writeToBedFile`,Write Bed File,0.0.1
+
 ,,
 ,**Build-in functions**,
 ,,

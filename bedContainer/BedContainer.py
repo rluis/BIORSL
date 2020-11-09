@@ -58,6 +58,35 @@ class BedContainer(object):
         """
         return self.chrList
 
+    def findEntriesWith(self, chr="Any", sCoord="Any", eCoord="Any") -> List[BedEntry]:
+        """
+        Return all BedEntry objects having chr or sCoord or eCoord equal to the given ones.
+
+        :param str chr: the chromosome where region is located
+        :param int sCoord: the start coordinate of the region
+        :param int eCoord: the end coordinate of the region
+        :return List: Return a list of BedEntry objects having the given features
+        """
+        tmpList = []
+        if chr != "Any":
+            if chr not in self.chrList:
+                raise ValueError("{} not in Chromosome List!".format(chr))
+
+            else:
+                tmpList = list(filter(lambda x: x.chr == chr, self.bedContainer[chr]))
+
+        elif chr == "Any":
+            for chr in self.chrList:
+                tmpList = tmpList + self.bedContainer[chr]
+
+        if sCoord != "Any":
+            tmpList = list(filter(lambda x: x.sCoord == int(sCoord), tmpList))
+
+        if eCoord != "Any":
+            tmpList = list(filter(lambda x: x.eCoord == int(eCoord), tmpList))
+
+        return tmpList
+
     def select_EntriesInChr(self, chrom: str) -> List[BedEntry]:
         """
         Returns all *BedEntry* objects inside the *BedContainer*, in the specified chromosome.

@@ -33,9 +33,11 @@ if __name__ == '__main__':
     print(container1.chrList)
 
     print("\n\n\n\n")
-    print(list(filter( lambda x: x.chr == "A", container1))[0])
+    #Find BedEntry objects in BedContainer by features
+    for entry in container1.findEntriesWith(sCoord=131808034):
+        print(entry)
     print("\n\n\n\n")
-
+    exit()
     #container1.removeEntryBed(entry)
 
 
@@ -45,7 +47,6 @@ if __name__ == '__main__':
     print(container1[0])
     print(container1)
 
-    exit()
 
     container2.readFromBedFile("EXONS_ALL_Homo_sapiens.GRCh38.90_Wchr.bed")
     print(container1)
@@ -66,7 +67,6 @@ if __name__ == '__main__':
 
     container1.writeToBedFile("AAAA")
 
-    exit()
     print(container1)
     print(container2)
     print(containerMerge)
@@ -80,7 +80,6 @@ if __name__ == '__main__':
 
     print(i)
 
-    exit()
     i = 0
     for x in container1:
         #print(x)

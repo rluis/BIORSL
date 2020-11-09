@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='BIORSL',
-    version='0.0.6',
+    version='0.0.7',
     packages=['bedEntry', 'bedContainer'],
     install_requires=['pysam==0.15.4'],
     url='https://github.com/rluis/BIORSL',
