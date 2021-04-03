@@ -4,7 +4,7 @@ setup(
     name='BIORSL',
     version='0.0.7',
     packages=['bedEntry', 'bedContainer'],
-    install_requires=['pysam==0.15.4'],
+    install_requires=['pysam'],
     url='https://github.com/rluis/BIORSL',
     license='GPL-3.0',
     author='rluis',
